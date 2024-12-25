@@ -1,0 +1,35 @@
+Test loading failed: Error: Process exited with code 1: Traceback (most recent call last):
+  File "<string>", line 200, in <module>
+  File "<string>", line 159, in discover_tests
+  File "/usr/lib/python3.10/unittest/loader.py", line 346, in discover
+    raise ImportError('Start directory is not importable: %r' % start_dir)
+ImportError: Start directory is not importable: '/home/teunb/Projects/Poker/tests'
+
+Error: Process exited with code 1: Traceback (most recent call last):
+  File "<string>", line 200, in <module>
+  File "<string>", line 159, in discover_tests
+  File "/usr/lib/python3.10/unittest/loader.py", line 346, in discover
+    raise ImportError('Start directory is not importable: %r' % start_dir)
+ImportError: Start directory is not importable: '/home/teunb/Projects/Poker/tests'
+
+    at ChildProcess.<anonymous> (/home/teunb/.vscode-server/extensions/littlefoxteam.vscode-python-test-adapter-0.8.2/out/src/processRunner.js:27:32)
+    at Object.onceWrapper (node:events:633:26)
+    at ChildProcess.emit (node:events:518:28)
+    at maybeClose (node:internal/child_process:1104:16)
+    at Socket.<anonymous> (node:internal/child_process:456:11)
+    at Socket.emit (node:events:518:28)
+    at Pipe.<anonymous> (node:net:343:12)
+
+
+Stacktrace: 
+    at S.syncTopLevel (/home/teunb/.vscode-server/extensions/ms-vscode.test-adapter-converter-0.2.1/out/extension.js:6:3)
+    at Sh.value (/home/teunb/.vscode-server/extensions/ms-vscode.test-adapter-converter-0.2.1/out/extension.js:3:4541)
+    at P.B (file:///home/teunb/.vscode-server/bin/fabdb6a30b49f79a7aba0f2ad9df9b399473380f/out/vs/workbench/api/node/extensionHostProcess.js:30:746)
+    at P.fire (file:///home/teunb/.vscode-server/bin/fabdb6a30b49f79a7aba0f2ad9df9b399473380f/out/vs/workbench/api/node/extensionHostProcess.js:30:964)
+    at Sh.value (/home/teunb/.vscode-server/extensions/hbenl.vscode-test-explorer-2.22.1/out/hub/testHub.js:53:43)
+    at P.B (file:///home/teunb/.vscode-server/bin/fabdb6a30b49f79a7aba0f2ad9df9b399473380f/out/vs/workbench/api/node/extensionHostProcess.js:30:746)
+    at P.C (file:///home/teunb/.vscode-server/bin/fabdb6a30b49f79a7aba0f2ad9df9b399473380f/out/vs/workbench/api/node/extensionHostProcess.js:30:816)
+    at P.fire (file:///home/teunb/.vscode-server/bin/fabdb6a30b49f79a7aba0f2ad9df9b399473380f/out/vs/workbench/api/node/extensionHostProcess.js:30:1033)
+    at PythonTestAdapter.<anonymous> (/home/teunb/.vscode-server/extensions/littlefoxteam.vscode-python-test-adapter-0.8.2/out/src/pythonTestAdapter.js:89:35)
+    at Generator.throw (<anonymous>)
+    at rejected (/home/teunb/.vscode-server/extensions/littlefoxteam.vscode-python-test-adapter-0.8.2/node_modules/tslib/tslib.js:115:69)
