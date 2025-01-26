@@ -1,5 +1,8 @@
+# Own stuff
 /.venv
-legacy
+/legacy
+/tests
+/bots
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
