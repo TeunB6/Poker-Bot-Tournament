@@ -42,7 +42,7 @@ for bot_file in bot_files:
     bot_class = getattr(bot_module, "PokerAgent")
     bot_class.name = bot_name
     
-    bot_classes.append(bot_class)
+    bot_classes.append(bot_class())
 
 print(bot_classes)
 
