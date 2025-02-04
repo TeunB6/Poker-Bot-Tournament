@@ -20,7 +20,7 @@ For the tournament, the main Python package used for the implementation of poker
 
 We wish you the best of luck in the tournament.
  
--lluminaTee
+-llluminaTee
 
 ## Rules
 - All bots need to be written in Python. 
@@ -38,12 +38,12 @@ We wish you the best of luck in the tournament.
     - The tournament will be run using the included tournament.py script.
     - All submitted bots will be imported and placed on a single large poker table.
     - After playing a large amount of games with a fixed hand limit, the agent with the most total chips summed across all games (with buyin * num_games subtracted for clarity), will be crowned the winner.
-    - A game is defined as a series of hands played with each agent starting with the same amount of chips (the buy-in). A game ends either when the hand limit is reached or when there is only one agent who still has any chips.
+    - A game is defined as a series of hands played with each agent starting with the same amount of chips (the buy-in). A game ends either when the hand limit (100) is reached or when there is only one agent who still has any chips.
     - The tournament will be run using standard Texas Holdem Rules.
 
 - Running your bot:
     - Your bot will be run in the Judge class environment.
-    - An action will be picked using your bot's choose_action method.
+    - An action will be picked using your bot's choose_action method. This action has a time-limit of 0.2s
     - Your bot will have a private attribute which is its id, this is its index in the list of players. So when supplied with a list containing information about all players. The information pertaining to your bot can be found at that index.
 
 - The choose_action method of your bot is supplied with the following information:
