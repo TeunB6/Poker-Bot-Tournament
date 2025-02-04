@@ -94,11 +94,10 @@ class Judge:
         while self.game.is_hand_running():
             player_id = self.game.current_player
             player: PokerAgentABC = self.players[player_id]
-            try:
-                assert player_id == player._id
-            except:
+            if player_id != player._id
                 print(player_id, player._id, history)
                 raise ValueError('Player ID mismatch')
+            
             try:
                 s = format_game_state_dict(self.game, history)
                 with time_limit(seconds=self.time_limit, msg=f'{player_id}: FOLD action performed instead'):
