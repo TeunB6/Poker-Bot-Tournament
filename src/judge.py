@@ -46,7 +46,7 @@ class Judge:
     The Judge class manages a game of Texas Hold'em poker, including player actions, game state, and enforcing time limits.
     Attributes:
         players (list): List of players participating in the game.
-        rewards (list): List of rewards for each player, across hands
+        rewards (list): List of rewards for each player.
         _settings (dict): Dictionary containing game settings.
         game (TexasHoldEm): Instance of the TexasHoldEm game.
         time_limit (int): Time limit for each player's move.
@@ -74,19 +74,19 @@ class Judge:
                                 small_blind=small_blind, big_blind=big_blind)
         self.time_limit = time_limit        
 
-    def run_hand(self, verbose: bool = False, display: bool = False, auto: bool = True, delay: float = 0.5) -> list[str]:
+    def run_hand(self, verbose: bool = False, display: bool = False, auto: bool = True, delay: float = 0.5) -> str:
         """
         Runs a single hand of Texas Hold'em poker.
         Args:
-            verbose (bool): If True, prints information about the game. 
+            verbose (bool): If True, prints detailed information about the game.
             display (bool): If True, displays the game using a GUI.
             auto (bool): If True, automatically progresses the game without waiting for user input.
             delay (float): Delay between actions in seconds.
         Returns:
-            list: History of the hand.
+            str: History of the hand.
         """
         self.game.start_hand()
-        history = []
+        history = ""
         
         if display:
             gui = TextGUI(self.game, enable_animation=USE_GUI_ANIMATIONS, no_wait=auto)
@@ -100,8 +100,9 @@ class Judge:
             
             try:
                 s = format_game_state_dict(self.game, history)
+                available_moves = self.game.get_available_moves()
                 with time_limit(seconds=self.time_limit, msg=f'{player_id}: FOLD action performed instead'):
-                    move = player.choose_action(s, self.game.get_available_moves())
+                    move = player.choose_action(s, available_moves)
             except TimeoutException:
                 move = (ActionType.FOLD, None)
 
@@ -110,10 +111,7 @@ class Judge:
                 warn(f'Invalid move {move} by {player_id}. Defaulting to FOLD.')
                 move = (ActionType.FOLD, None)
             
-            history.append(player_id, move)
-            
-            if verbose:
-                print(format_move(player_id, move)) 
+            history += format_move(player_id, move)   
             
             if display:
                 gui.display_state()
@@ -129,7 +127,7 @@ class Judge:
         if display:
             gui.display_win()
         
-        history.append(f"{','.join(str(card) for card in self.game.board)}|{sum(p.amount for p in self.game.pots)}|{','.join(f'{player.player_id}:{player.chips}' for player in self.game.players)}")
+        history += f"|RESULT||{','.join(str(card) for card in self.game.board)}|{sum(p.amount for p in self.game.pots)}|{','.join(f'{player.player_id}:{player.chips}' for player in self.game.players)}"
         self.rewards = [current_reward + player.chips for current_reward, player in zip(self.rewards, self.game.players)]
         return history
     
@@ -232,8 +230,8 @@ class Judge:
         self.game = TexasHoldEm(**self._settings)
         
 if __name__ == '__main__':
-    judge = Judge(*[CallAgent() for  _ in range(4)])
-    h = judge.run_hand_n_times(display=False)
+    judge = Judge(*[CallAgent() for  _ in range(10)])
+    h = judge.run_hand_n_times(num_rounds=1000, display=False)
     #print(h)
     print(judge.rewards)
     

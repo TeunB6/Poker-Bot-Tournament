@@ -19,5 +19,5 @@ def format_game_state_dict(game: TexasHoldEm, history: list) -> dict:
     }
 
 def format_move(player_id: int, move: tuple[ActionType, int]) -> str:
-    return f"{player_id}:{move[0].name}" + f"{':{}\n'.format(move[1]) if move[1] is not None else ':\n'}"
+    return f"{player_id}:{move[0].name}" + f"{':{}'.format(move[1]) if move[1] is not None else ':'}"
         

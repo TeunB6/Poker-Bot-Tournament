@@ -16,14 +16,14 @@ class TestJudge(unittest.TestCase):
 
     def test_run_hand(self):
         history = self.judge.run_hand()
-        self.assertIsInstance(history, list)
+        self.assertIsInstance(history, str)
         self.assertTrue(len(history) > 0)
 
     def test_run_hand_n_times(self):
         histories = self.judge.run_hand_n_times(num_rounds=10)
         self.assertEqual(len(histories), 10)
         for history in histories:
-            self.assertIsInstance(history, list)
+            self.assertIsInstance(history, str)
             self.assertTrue(len(history) > 0)
 
     def test_run_game(self):
