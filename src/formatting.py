@@ -14,7 +14,7 @@ def format_game_state_dict(game: TexasHoldEm, history: list) -> dict:
         "hand": deepcopy(game.hands[game.current_player]),
         "board": deepcopy(game.board),
         "chips": [p.chips for p in game.players],
-        "at_stake": [game.chips_at_stake(p) for p in game.players],
+        "at_stake": [game.chips_at_stake(p.player_id) for p in game.players],
         "move_history": deepcopy(history)
     }
 
