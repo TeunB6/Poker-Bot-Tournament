@@ -94,7 +94,7 @@ class Judge:
         while self.game.is_hand_running():
             player_id = self.game.current_player
             player: PokerAgentABC = self.players[player_id]
-            if player_id != player._id
+            if player_id != player._id:
                 print(player_id, player._id, history)
                 raise ValueError('Player ID mismatch')
             
